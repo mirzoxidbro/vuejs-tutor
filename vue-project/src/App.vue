@@ -1,7 +1,7 @@
 <template>
   <div class="ml-5">
-      <post-form/>
-      <message-list v-bind:messages="messages"/>
+      <post-form @addMessage="createMessage"/>
+      <message-list :xabarlar="messages"/>
   </div>
 </template>
 <script>
@@ -18,19 +18,12 @@ export default {
           {id:1, message: "xabar 1"},
           {id:2, message: "xabar 2"},
           {id:3, message: "xabar 3"},
-        ],
-        message: ""
+        ]
       }
     },
     methods: {
-      createMessage(){
-        const newMessage = {
-          id: Date.now(),
-          message: this.message
-        }
-        this.messages.push(newMessage)
-
-        this.message = ''
+      createMessage(message){
+        this.messages.push(message)
       }
     },
 }
