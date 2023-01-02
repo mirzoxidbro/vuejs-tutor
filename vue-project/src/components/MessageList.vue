@@ -1,12 +1,19 @@
 <template>
     <div>
-        <div class="border-cyan-500 mx-auto" v-for="message in xabarlar" v-bind:key="message.id">
-          <div class="mt-20"><b class="mr-4">Message {{ message.id }}:</b> {{ message.message }}</div>
+        <div
+            class="border-cyan-500 mx-auto" border="1"
+            v-for="message in xabarlar" 
+            v-bind:key="message.id">
+            <message-item :message="message" />
         </div>
     </div>
 </template>
 <script>
+import MessageItem from './MessageItem.vue'
 export default {
+    components:{
+        MessageItem
+    },
     props: {
         xabarlar: {
             type: Array,
